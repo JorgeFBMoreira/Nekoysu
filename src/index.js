@@ -1,6 +1,7 @@
 import { config } from 'dotenv'; config();
 import { Client, Routes } from 'discord.js';
 import { REST } from '@discordjs/rest';
+import { orderCommand } from './commands/order'
 
 const client = new Client({
     intents: ['Guilds', 'GuildMessages', 'MessageContent']
@@ -28,66 +29,7 @@ client.on('interactionCreate', (interaction) => {
 
 
 async function main() {
-    const commands = [
-        {
-            name: 'order',
-            description: 'order something',
-            options: [
-                {
-                    name: 'food',
-                    description: 'the type of food',
-                    type: 3,
-                    required: true,
-                    choices: [
-                        {
-                            name: 'Cake',
-                            value: 'cake',
-                        },
-
-                        {
-                            name: 'Hamburger',
-                            value: 'hamburger',
-                        },
-                    ],
-                },
-
-                {
-                    name: 'drink',
-                    description: 'the type of drink',
-                    type: 3,
-                    required: true,
-                    choices: [
-                        {
-                            name: 'Water',
-                            value: 'water',
-                        },
-
-                        {
-                            name: 'Coca-cola',
-                            value: 'coca_cola',
-                        },
-
-                        {
-                            name: 'Sprite',
-                            value: 'sprite',
-                        },
-                    ],
-                },
-            ],
-        },
-
-        {
-            name: 'test',
-            description: 'testing command',
-        },
-
-        {
-            name: 'test2',
-            description: 'another testing command',
-        },
-    ]
-
-    console.log(commands)
+    const commands = [orderCommand]
 
     try {
         console.log('Started refreshing application (/) commands.');

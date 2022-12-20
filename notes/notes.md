@@ -37,6 +37,8 @@ Dotenv allows us to use enviroment variables, which ensure security (we don't wa
 > npm i @discordjs/rest
 Take care to call the discord API for us
 
+> npm i @discordjs/builders
+Discord.js builders
 
 
 ## Other notes
