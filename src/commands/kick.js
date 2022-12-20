@@ -40,7 +40,5 @@ const kickCommand = new SlashCommandBuilder()
             )
     )
 
-    
-    
 
 export default kickCommand.toJSON();
