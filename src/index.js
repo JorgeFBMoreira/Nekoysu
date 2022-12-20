@@ -18,10 +18,30 @@ client.on('ready', () => {
     console.log(`Bot ${client.user.tag} has logged in`)
 })
 
+client.on('interactionCreate', (interaction) => {
+    if(interaction.isChatInputCommand()) {
+        interaction.reply({
+            content: `You ordered \`${interaction.options.get('food').value}\``
+        })
+    }
+})
 
 
 async function main() {
     const commands = [
+        {
+            name: 'order',
+            description: 'order something',
+            options: [
+                {
+                    name: 'food',
+                    description: 'the type of food',
+                    type: 3,
+                    required: true,
+                },
+            ],
+        },
+
         {
             name: 'test',
             description: 'testing command',
