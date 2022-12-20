@@ -21,7 +21,7 @@ client.on('ready', () => {
 client.on('interactionCreate', (interaction) => {
     if(interaction.isChatInputCommand()) {
         interaction.reply({
-            content: `You ordered \`${interaction.options.get('food').value}\``
+            content: `You ordered \`${interaction.options.get('food').name}\` and \`${interaction.options.get('drink').name}\``
         })
     }
 })
@@ -38,6 +38,40 @@ async function main() {
                     description: 'the type of food',
                     type: 3,
                     required: true,
+                    choices: [
+                        {
+                            name: 'Cake',
+                            value: 'cake',
+                        },
+
+                        {
+                            name: 'Hamburger',
+                            value: 'hamburger',
+                        },
+                    ],
+                },
+
+                {
+                    name: 'drink',
+                    description: 'the type of drink',
+                    type: 3,
+                    required: true,
+                    choices: [
+                        {
+                            name: 'Water',
+                            value: 'water',
+                        },
+
+                        {
+                            name: 'Coca-cola',
+                            value: 'coca_cola',
+                        },
+
+                        {
+                            name: 'Sprite',
+                            value: 'sprite',
+                        },
+                    ],
                 },
             ],
         },
@@ -52,6 +86,8 @@ async function main() {
             description: 'another testing command',
         },
     ]
+
+    console.log(commands)
 
     try {
         console.log('Started refreshing application (/) commands.');
