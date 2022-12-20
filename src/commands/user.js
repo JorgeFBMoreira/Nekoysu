@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 
+// user
 const usersCommand = new SlashCommandBuilder()
     .setName('users')
     .setDescription('Users command')

@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 
+// choises
 const orderCommand = new SlashCommandBuilder()
     .setName('food')
     .setDescription('Order your favorite meals')

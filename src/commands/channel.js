@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 
+// Various other commands type
 const channelCommand = new SlashCommandBuilder()
     .setName('channels')
     .setDescription('Channels command')

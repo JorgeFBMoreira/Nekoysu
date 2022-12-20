@@ -5,6 +5,10 @@ import orderCommand from './commands/order.js';
 import rolesCommand from './commands/roles.js';
 import usersCommand from './commands/user.js';
 import channelCommand from './commands/channel.js';
+import banCommand from './commands/ban.js';
+import kickCommand from './commands/kick.js';
+
+
 
 const client = new Client({
     intents: ['Guilds', 'GuildMessages', 'MessageContent']
@@ -30,9 +34,8 @@ client.on('interactionCreate', (interaction) => {
     }
 })
 
-
 async function main() {
-    const commands = [orderCommand, rolesCommand, usersCommand, channelCommand]
+    const commands = [orderCommand, rolesCommand, usersCommand, channelCommand, banCommand, kickCommand]
 
     try {
         console.log('Started refreshing application (/) commands.');
@@ -51,15 +54,3 @@ async function main() {
 }
 
 main()
-
-
-
-/*(async () => {
-    try {
-  
-  
-      console.log('Successfully reloaded application (/) commands.');
-    } catch (error) {
-      console.error(error);
-    }
-})();*/
