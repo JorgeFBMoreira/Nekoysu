@@ -34,7 +34,8 @@ Every time a new change is made, it'll restart the program/process (in this case
 > npm i -D dotenv
 Dotenv allows us to use enviroment variables, which ensure security (we don't want to place our raw tokens inside our program, otherwise it'll, easily, be compromissed)
 
-
+> npm i @discordjs/rest
+Take care to call the discord API for us
 
 
 
