@@ -3,6 +3,8 @@ import { Client, Routes } from 'discord.js';
 import { REST } from '@discordjs/rest';
 import orderCommand from './commands/order.js';
 import rolesCommand from './commands/roles.js';
+import usersCommand from './commands/user.js';
+import channelCommand from './commands/channel.js';
 
 const client = new Client({
     intents: ['Guilds', 'GuildMessages', 'MessageContent']
@@ -30,7 +32,7 @@ client.on('interactionCreate', (interaction) => {
 
 
 async function main() {
-    const commands = [orderCommand, rolesCommand]
+    const commands = [orderCommand, rolesCommand, usersCommand, channelCommand]
 
     try {
         console.log('Started refreshing application (/) commands.');
