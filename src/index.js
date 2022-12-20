@@ -1,5 +1,5 @@
 import { config } from 'dotenv'; config();
-import { Client, Routes } from 'discord.js';
+import { ActionRowBuilder, Client, CommandInteractionOptionResolver, Routes, SelectMenuBuilder } from 'discord.js';
 import { REST } from '@discordjs/rest';
 import orderCommand from './commands/order.js';
 import rolesCommand from './commands/roles.js';
@@ -28,9 +28,24 @@ client.on('ready', () => {
 
 client.on('interactionCreate', (interaction) => {
     if(interaction.isChatInputCommand()) {
-        interaction.reply({
-            content: `You ordered \`${interaction.options.get('food').name}\` and \`${interaction.options.get('drink').name}\``
-        })
+        if(interaction.commandName === 'order') {
+            console.log('Order Command')
+            //console.log(interaction)
+
+            const actionRowComponent = new ActionRowBuilder()
+                .setComponents(new SelectMenuBuilder()
+                    .setCustomId('food_options')
+                    .setOptions(
+                        { label: 'Cake',  value: 'cake'  },
+                        { label: 'Pizza', value: 'pizza' },
+                        { label: 'Sushi', value: 'sushi' },
+                    )
+                )
+
+            interaction.reply({
+                components: [actionRowComponent.toJSON()],
+            })
+        }
     }
 })
 

@@ -2,9 +2,9 @@ import { SlashCommandBuilder } from '@discordjs/builders';
 
 // choises
 const orderCommand = new SlashCommandBuilder()
-    .setName('food')
+    .setName('order')
     .setDescription('Order your favorite meals')
-    .addStringOption((option) => 
+    /*.addStringOption((option) => 
         option
             .setName('food')
             .setDescription('Select your favorite meals')
@@ -24,6 +24,25 @@ const orderCommand = new SlashCommandBuilder()
                 { name: 'Coca-cola', value: 'coca_cola', },
                 { name: 'Sprite',    value: 'sprite', }
             )
+    )/*.addStringOption((option) => 
+        option
+            .setName('food')
+            .setDescription('Select your favorite meals')
+            .setRequired(true)
+            .setChoices(
+                { name: 'Cake',      value: 'cake', },
+                { name: 'Hamburger', value: 'hamburger', }
+            )
     )
+    .addStringOption((option) => 
+        option
+            .setName('drink')
+            .setDescription('Select your favorite drinks')
+            .setRequired(true)
+            .setChoices(
+                { name: 'Water',     value: 'water', },
+                { name: 'Coca-cola', value: 'coca_cola', },
+                { name: 'Sprite',    value: 'sprite', }
+            )*/
 
 export default orderCommand.toJSON();
