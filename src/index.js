@@ -1,7 +1,8 @@
 import { config } from 'dotenv'; config();
 import { Client, Routes } from 'discord.js';
 import { REST } from '@discordjs/rest';
-import { orderCommand } from './commands/order'
+import orderCommand from './commands/order.js';
+import rolesCommand from './commands/roles.js';
 
 const client = new Client({
     intents: ['Guilds', 'GuildMessages', 'MessageContent']
@@ -29,7 +30,7 @@ client.on('interactionCreate', (interaction) => {
 
 
 async function main() {
-    const commands = [orderCommand]
+    const commands = [orderCommand, rolesCommand]
 
     try {
         console.log('Started refreshing application (/) commands.');
