@@ -170,3 +170,12 @@ Merge made by the 'recursive' strategy.
 
 
 The last command I want to talk about is `git log` which, as the name suggests, logs everything you have done.
+
+
+
+
+#### SSH KEY
+
+In order to push changes from your local machine to your github repository, you need a SSH Key.
+
+Please, follow the guide made by GitHub clicking in the following [link: Connecting to Github with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
