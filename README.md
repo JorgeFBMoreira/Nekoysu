@@ -7,4 +7,5 @@ Nekoysu! is a Discord Bot related to [osu!](https://osu.ppy.sh/) - the bestest f
 ## Libraries
 
 - [discord.js (v14)](https://discord.js.org/);
-- Dotenv (-D).
+- Dotenv (-D);
+- Axios.
