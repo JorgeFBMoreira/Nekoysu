@@ -5,20 +5,17 @@ const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('prune')
-		.setDescription('Prune up to 99 messages.')
+		.setDescription('Prune up to 100 messages.')
 		.addIntegerOption(option => option
             .setName('amount')
-            .setDescription('Number of messages to prune')
+			.setDescription('test | Number of messages to prune')
+			.setMinValue(1)
+			.setMaxValue(100)
         ),
-
+	developer: true,
+		
 	async execute(interaction) {
-		const amount = interaction.options.getInteger('amount');
-		if (amount < 1 || amount > 99) {
-			return interaction.reply({ 
-                content: 'You need to input a number between 1 and 99.', 
-                ephemeral: true 
-            });
-		}
+		const amount = Math.round(interaction.options.getInteger('amount'));
 
 		await interaction.channel.bulkDelete(amount, true).catch(error => {
 			console.error(error);

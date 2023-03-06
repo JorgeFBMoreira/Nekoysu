@@ -11,7 +11,7 @@ Under development.
 ## Libraries
 
 - [discord.js (v14)](https://discord.js.org/);
-- Axios;
-- fs (native);
-- path (native);
+- fs     (native);
+- path   (native);
 - Dotenv (-D).
+- Axios  (-D);

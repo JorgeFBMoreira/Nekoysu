@@ -13,6 +13,7 @@ const client = new Client({
 
 client.events = new Collection();
 client.commands = new Collection();
+client.subCommands = new Collection();
 
 const { loadEvents } = require('./Handlers/eventHandler.js');
 loadEvents(client)

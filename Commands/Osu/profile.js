@@ -23,7 +23,12 @@ module.exports = {
                 { name: 'Mania',    value: 'mania'  }
             )
             .setRequired(true)
-        ),
+        )
+        .addBooleanOption((options) => options
+            .setName('lazer')
+            .setDescription('Lazer profile')
+        )
+        ,
     
     /**
      * 
