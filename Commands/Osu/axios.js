@@ -1,5 +1,4 @@
 const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
-const { config } = require('dotenv'); config();
 const { OSU_ENDPOINT_URL, OSU_TOKEN, PRIVATE_LOGS } = process.env
 
 
@@ -9,9 +8,11 @@ module.exports = {
 		.setName('axios')
 		.setDescription('Testing axios rest api.'),
     
+    developer: true,
+
     /**
      * 
-     * @param { ChatInputCommandInteraction } interaction
+     * @param {ChatInputCommandInteraction} interaction
      */
 	async execute(interaction) {
         const channelLog = await interaction.client.channels.fetch(PRIVATE_LOGS)

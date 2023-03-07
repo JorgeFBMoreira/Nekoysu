@@ -10,7 +10,7 @@ Under development.
 
 ## Libraries
 
-- [discord.js (v14)](https://discord.js.org/);
+- [discord.js (v14.7.1)](https://discord.js.org/);
 - fs     (native);
 - path   (native);
 - Dotenv (-D).

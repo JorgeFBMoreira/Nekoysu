@@ -1,16 +1,21 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
 
 
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('kick')
-		.setDescription('test - Select a member and kick them (but not really).')
-		.addUserOption(option => option
+		.setDescription('Select a member and kick them (but not really).')
+		.addUserOption((options) => options
             .setName('target')
             .setDescription('The member to kick')
-        ),
+        )
+        .setDMPermission(false),
 
+	/**
+	 * 
+	 * @param {ChatInputCommandInteraction} interaction 
+	 */
 	async execute(interaction) {
 		const member = interaction.options.getMember('target');
 		

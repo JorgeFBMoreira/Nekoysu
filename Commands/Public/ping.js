@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
 
 
 
@@ -7,7 +7,11 @@ module.exports = {
 		.setName('ping')
 		.setDescription('Replies with Pong!'),
         
+	/**
+	 * 
+	 * @param { ChatInputCommandInteraction } interaction 
+	 */
 	async execute(interaction) {
-		await interaction.reply('Pong!');
+		await interaction.reply(`🏓 API Latency: \`${Math.round(interaction.client.ws.ping)}ms\` [${Date.now() - interaction.createdTimestamp}ms]`);
 	},
 };

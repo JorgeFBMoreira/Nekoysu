@@ -13,7 +13,7 @@ module.exports = {
     execute(interaction) {
         loadCommands(interaction.client);
 
-        interaction.reply({
+        return interaction.reply({
             content: "Reloaded Commands ",
             ephemeral: true
         });

@@ -14,7 +14,7 @@ module.exports = {
         await interaction.client.removeAllListeners();
 
         loadEvents(interaction.client);
-        interaction.reply({
+        return interaction.reply({
             content: "Reloaded Events",
             ephemeral: true
         });

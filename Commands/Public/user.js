@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
 
 
 
@@ -7,6 +7,10 @@ module.exports = {
 		.setName('user')
 		.setDescription('Provides information about the user.'),
 
+	/**
+	 * 
+	 * @param {ChatInputCommandInteraction} interaction 
+	 */
 	async execute(interaction) {
         const { user, member } = interaction;
         

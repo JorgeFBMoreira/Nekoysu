@@ -1,5 +1,4 @@
 const { SlashCommandBuilder, ChatInputCommandInteraction, EmbedBuilder } = require('discord.js');
-const { config } = require('dotenv'); config();
 const { OSU_ENDPOINT_URL, OSU_TOKEN, PRIVATE_LOGS } = process.env
 
 
@@ -32,7 +31,7 @@ module.exports = {
     
     /**
      * 
-     * @param { ChatInputCommandInteraction } interaction
+     * @param {ChatInputCommandInteraction} interaction
      */
 	async execute(interaction) {
         const { client, options } = interaction

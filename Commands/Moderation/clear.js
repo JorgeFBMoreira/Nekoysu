@@ -1,19 +1,25 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
 
 
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('prune')
-		.setDescription('Prune up to 100 messages.')
-		.addIntegerOption(option => option
+		.setName('clear')
+		.setDescription('Delete up to 100 messages.')
+		.addIntegerOption((options) => options
             .setName('amount')
-			.setDescription('test | Number of messages to prune')
+			.setDescription('Number of messages to delete')
 			.setMinValue(1)
 			.setMaxValue(100)
-        ),
+        )
+        .setDMPermission(false),
+
 	developer: true,
 		
+	/**
+	 * 
+	 * @param {ChatInputCommandInteraction} interaction
+	 */
 	async execute(interaction) {
 		const amount = Math.round(interaction.options.getInteger('amount'));
 
