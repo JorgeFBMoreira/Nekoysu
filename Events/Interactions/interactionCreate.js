@@ -8,7 +8,6 @@ module.exports = {
 	/**
 	 * 
 	 * @param {ChatInputCommandInteraction} interaction 
-	 * @returns 
 	 */
 	async execute(interaction) {
 		if (!interaction.isChatInputCommand()) return;
@@ -39,7 +38,7 @@ module.exports = {
 			
 			else await command.execute(interaction);
 		} catch (error) {
-			console.error(`Error executing ${interaction.commandName}`);
+			console.error(`\nError executing ${interaction.commandName}`);
 			console.error(error);
 		}
 	},

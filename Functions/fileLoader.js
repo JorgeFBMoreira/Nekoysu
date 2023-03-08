@@ -1,6 +1,7 @@
 const { readdir } = require('fs/promises');
 const path = require('path');
 
+// Deletes file cached
 async function deleteCachedFile(file) {
     const filePath = path.resolve(file);
     if(require.cache[filePath]) {
@@ -9,7 +10,7 @@ async function deleteCachedFile(file) {
 }
 
 
-
+// Load files
 async function loadFiles(dirName, fileType) {
     let files = [];
     const items = await readdir(dirName, { withFileTypes: true });

@@ -1,6 +1,7 @@
 const axios = require('axios').default;
 const { OSU_ENDPOINT_URL, OSU_TOKEN } = process.env 
 
+// Calls osu!Api. Current Endpoint: v2
 async function osuApiCall(url, params) {
     let response, error;
     

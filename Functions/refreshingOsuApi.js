@@ -1,5 +1,6 @@
 const axios = require('axios').default;
 
+// Refresh Osu Api Token [oauth2 - Client Credentials]
 async function refreshingOsuApiToken() {
     let error;
 

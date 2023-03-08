@@ -11,12 +11,11 @@ module.exports = {
      */
     async execute(interaction) {        
         const { guild }        = interaction;
-        const { emojiLoader }  = require('../../../Functions/emojisLoader.js');
-        const { renderEmojis } = require('../../../Functions/emojisRender.js');
+        const { emojiLoader, renderEmojis }  = require('../../../Functions/emojisLoader.js');
 
         const guildEmojis = guild.emojis.cache;
         const emojis      = guildEmojis.map(emoji => emoji.toString()).join(" ");
-
+        
         if(!emojis) {
             console.log('Something went wrong');
 

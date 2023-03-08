@@ -2,6 +2,7 @@ const { loadCommands } = require('../../Handlers/commandHandler');
 const { Events, Client } = require('discord.js');
 
 
+
 module.exports = {
 	name: Events.ClientReady,
 	once: true,
