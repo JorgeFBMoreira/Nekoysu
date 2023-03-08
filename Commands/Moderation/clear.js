@@ -13,7 +13,7 @@ module.exports = {
 			.setMaxValue(100)
         )
         .setDMPermission(false)
-		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
+		.setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages),
 
 	developer: true,
 		
