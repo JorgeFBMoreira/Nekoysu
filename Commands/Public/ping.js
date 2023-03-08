@@ -12,6 +12,6 @@ module.exports = {
 	 * @param { ChatInputCommandInteraction } interaction 
 	 */
 	async execute(interaction) {
-		await interaction.reply(`🏓 API Latency: \`${Math.round(interaction.client.ws.ping)}ms\` [${Date.now() - interaction.createdTimestamp}ms]`);
+		await interaction.reply(`🏓 API Latency: \`${Math.round(interaction.client.ws.ping)}ms\` \n_The bot took \`${Date.now() - interaction.createdTimestamp}ms\` to respond to this interaction._`);
 	},
 };

@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ChatInputCommandInteraction, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, ChatInputCommandInteraction, PermissionFlagsBits, EmbedBuilder } = require('discord.js');
 const { OSU_ENDPOINT_URL, OSU_TOKEN, PRIVATE_LOGS } = process.env
 
 
@@ -27,6 +27,8 @@ module.exports = {
             .setName('lazer')
             .setDescription('Lazer profile')
         )
+        .setDMPermission(false)
+        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         ,
     
     /**
@@ -42,9 +44,7 @@ module.exports = {
         
         const { osuApiCall } = require('../../Functions/osuApiCall.js');
         const { response: profile, error } = await osuApiCall(
-            `/users/${username}/${gamemode}`, 
-            OSU_ENDPOINT_URL, 
-            OSU_TOKEN,
+            `/users/${username}/${gamemode}`,
             { "key": "username" }
         );
 

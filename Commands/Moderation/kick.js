@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
+const { SlashCommandBuilder, ChatInputCommandInteraction, PermissionFlagsBits } = require('discord.js');
 
 
 
@@ -6,9 +6,12 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('kick')
 		.setDescription('Select a member and kick them (but not really).')
+		.setDMPermission(false)
+		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
 		.addUserOption((options) => options
             .setName('target')
             .setDescription('The member to kick')
+			.setRequired(true)
         )
         .setDMPermission(false),
 

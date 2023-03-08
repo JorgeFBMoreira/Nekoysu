@@ -16,7 +16,7 @@ module.exports = {
         loadEvents(interaction.client);
         return interaction.reply({
             content: "Reloaded Events",
-            ephemeral: true
+            ephemeral: true,
         });
-    }
+    },
 };

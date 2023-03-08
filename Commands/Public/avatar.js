@@ -9,6 +9,7 @@ module.exports = {
 		.addUserOption((options) => options
             .setName('target')
             .setDescription('The user\'s avatar to show')
+			.setRequired(true)
         ),
       
 	/**

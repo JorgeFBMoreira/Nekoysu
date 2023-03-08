@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
+const { SlashCommandBuilder, ChatInputCommandInteraction, PermissionFlagsBits } = require('discord.js');
 
 
 
@@ -12,7 +12,8 @@ module.exports = {
 			.setMinValue(1)
 			.setMaxValue(100)
         )
-        .setDMPermission(false),
+        .setDMPermission(false)
+		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
 	developer: true,
 		

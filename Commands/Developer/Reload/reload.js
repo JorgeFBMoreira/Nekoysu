@@ -9,6 +9,7 @@ module.exports = {
         .setName('reload')
         .setDescription('Reload your commands/events')
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+        .setDMPermission(true)
         .addSubcommand((options) => options
             .setName("events")
             .setDescription('Reload your events.')
@@ -17,4 +18,4 @@ module.exports = {
             .setName("commands")
             .setDescription('Reload your commands.')
         ),
-}
+};

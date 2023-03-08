@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
+const { SlashCommandBuilder, ChatInputCommandInteraction, PermissionFlagsBits } = require('discord.js');
 const { OSU_ENDPOINT_URL, OSU_TOKEN, PRIVATE_LOGS } = process.env
 
 
@@ -6,7 +6,9 @@ const { OSU_ENDPOINT_URL, OSU_TOKEN, PRIVATE_LOGS } = process.env
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('axios')
-		.setDescription('Testing axios rest api.'),
+		.setDescription('Testing axios rest api.')
+        .setDMPermission(false)
+        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
     
     developer: true,
 

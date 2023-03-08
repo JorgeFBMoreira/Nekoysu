@@ -2,10 +2,10 @@ const { Client, Collection, Partials, GatewayIntentBits } = require('discord.js'
 const { config } = require('dotenv'); config();
 const { BOT_TOKEN } = process.env;
 
-const { Guilds, GuildMembers, GuildMessages } = GatewayIntentBits;
+const { Guilds, GuildMembers, GuildMessages, GuildEmojisAndStickers } = GatewayIntentBits;
 const { User, Message, GuildMember, ThreadMember } = Partials;
 const client = new Client({ 
-	intents: [Guilds, GuildMembers, GuildMessages],
+	intents: [Guilds, GuildMembers, GuildMessages, GuildEmojisAndStickers],
     partials: [User, Message, GuildMember, ThreadMember] 
 });
 
@@ -14,6 +14,7 @@ const client = new Client({
 client.events      = new Collection();
 client.commands    = new Collection();
 client.subCommands = new Collection();
+client.emojisList  = new Collection();
 
 const { loadEvents } = require('./Handlers/eventHandler.js');
 loadEvents(client)

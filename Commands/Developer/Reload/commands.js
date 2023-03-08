@@ -17,5 +17,5 @@ module.exports = {
             content: "Reloaded Commands ",
             ephemeral: true
         });
-    }
+    },
 };

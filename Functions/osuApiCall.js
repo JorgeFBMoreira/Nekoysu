@@ -1,8 +1,7 @@
 const axios = require('axios').default;
+const { OSU_ENDPOINT_URL, OSU_TOKEN } = process.env 
 
-
-
-async function osuApiCall(url, OSU_ENDPOINT_URL, OSU_TOKEN, params) {
+async function osuApiCall(url, params) {
     let response, error;
     
     try {
@@ -13,7 +12,7 @@ async function osuApiCall(url, OSU_ENDPOINT_URL, OSU_TOKEN, params) {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${OSU_TOKEN}`
+                'Authorization': OSU_TOKEN
             },
             params: {
                 params,
@@ -22,13 +21,20 @@ async function osuApiCall(url, OSU_ENDPOINT_URL, OSU_TOKEN, params) {
 
         response = data.data;
     } catch (err) {
-        console.log(err);
+        // OSU_TOKEN Expired -> Refresh
+        if(err.code === 'ERR_BAD_REQUEST' && err.response.status === 401 && err.response.statusText === 'Unauthorized' && err.response.data.authentication === 'basic') {
+            const { refreshingOsuApiToken } = require('./refreshingOsuApi.js');
+            const errorRefreshingToken = await refreshingOsuApiToken();
+    
+            if(errorRefreshingToken) return err = errorRefreshingToken.response;
+            return osuApiCall(url, OSU_ENDPOINT_URL, process.env.OSU_TOKEN, params);            
+        }
 
         error = err.response;
     }
     
     return { response, error };
-}
+};
 
 
 
