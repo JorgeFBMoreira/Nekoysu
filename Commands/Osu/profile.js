@@ -41,40 +41,39 @@ module.exports = {
         const channelLog = await client.channels.fetch(PRIVATE_LOGS)
         const username   = options.getString('username');
         const gamemode   = options.getString('gamemode');
+
+        await interaction.reply({
+            content: 'Fetching profile data...',
+            fetchReply: true
+        })
         
         const { osuApiCall } = require('../../Functions/osuApiCall.js');
-        const { response: profile, error } = await osuApiCall(
+        const profile = await osuApiCall(
             `/users/${username}/${gamemode}`,
             { "key": "username" }
-        );
+        ).catch(async (err) => {
+            if(err.status === 404) await interaction.editReply({
+                content: `The user \`${username}\` does not exist.`
+            });
 
-        if(error) {
-            interaction.reply({
-                content: `Something went wrong.`,
+            else await interaction.followUp({
+                content: `Unknown error has accoured. Please, contact the owner of this bot.`,
                 ephemeral: true
             });
 
-            return channelLog.send({
-                content: [
-                    `Command used: ${interaction.commandName}`,
-                    `User: ${interaction.user.tag}\n`,
-                    `Status: ${error.status}`,
-                    `Status Text: ${error.statusText}`,
-                ].join('\n'),
-            });
-        }
-
-
-
-        const Embed = new EmbedBuilder()
-            .setAuthor({ name: `osu!${profile.rankHistory.mode} | ${profile.username}` })
-            .setDescription([
-                `Rank: ${profile.statistics.global_rank} | ${profile.statistics.country_rank} :flag_${profile.country.code.toLowerCase()}:`,
-                `PP: ${Math.round(profile.statistics.pp).toLocaleString('en-US')}`,
+            throw console.log([
+                `\n\n\nSomething went wrong with the following request:`,
+                `On ${__dirname}`,
+                `When: executing command: ${interaction.commandName}`,
+                `> Error Code: ${err.code}`,
+                `> Status: ${err.status}`,
+                `> Status Text: ${err.statusText}`
             ].join('\n'));
-            
-        return interaction.reply({
-            embeds: [Embed]
-        });
-	},
+        })
+
+        
+
+        console.log(profile)
+        await interaction.editReply('Worked! Check your terminal');
+    },
 };

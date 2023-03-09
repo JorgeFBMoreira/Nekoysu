@@ -4,7 +4,6 @@ async function loadCommands(client) {
     
     await client.commands.clear();
     await client.subCommands.clear();
-
     
     
     const commandsArray = [];

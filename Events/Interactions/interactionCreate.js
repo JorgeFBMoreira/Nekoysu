@@ -38,6 +38,8 @@ module.exports = {
 			
 			else await command.execute(interaction);
 		} catch (error) {
+			if(!error) return;
+			
 			console.error(`\nError executing ${interaction.commandName}`);
 			console.error(error);
 		}

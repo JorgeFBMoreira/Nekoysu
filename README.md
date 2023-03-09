@@ -6,8 +6,6 @@ Under development.
 
 
 
-
-
 ## Libraries
 
 - [discord.js (v14.7.1)](https://discord.js.org/);

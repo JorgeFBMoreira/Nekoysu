@@ -16,8 +16,11 @@ client.commands    = new Collection();
 client.subCommands = new Collection();
 client.emojisList  = new Collection();
 
+const { axiosInterceptor } = require('./Functions/axiosInterceptor.js');
+axiosInterceptor();
+
 const { loadEvents } = require('./Handlers/eventHandler.js');
-loadEvents(client)
+loadEvents(client);
 
 
 

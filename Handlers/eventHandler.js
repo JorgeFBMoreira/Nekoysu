@@ -1,5 +1,5 @@
 async function loadEvents(client) {
-    const { loadFiles }  = require('../Functions/fileLoader.js');
+    const { loadFiles } = require('../Functions/fileLoader.js');
     console.time('Events Loaded');
 
     client.events = new Map();
