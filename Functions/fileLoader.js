@@ -46,7 +46,6 @@ async function loadFiles(dirName, fileType) {
     }
     
     await Promise.all(files.map(deleteCachedFile));
-    console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n', typeof(files), files[1])
     return files;
 };
 
