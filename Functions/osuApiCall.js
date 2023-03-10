@@ -15,9 +15,9 @@ async function osuApiCall(url, params) {
             url: url,
             baseURL: OSU_ENDPOINT_URL,
             headers: {
-                'Accept': 'application/json',
+                Accept:         'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${OSU_TOKEN}`
+                Authorization:  OSU_TOKEN, 
             },
             params: {
                 params,
@@ -26,7 +26,6 @@ async function osuApiCall(url, params) {
 
         return data.data;
     } catch (err) {
-        console.log(err)
         throw err;
     }
 };

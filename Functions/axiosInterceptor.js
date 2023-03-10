@@ -1,4 +1,5 @@
 const axios = require('axios').default;
+const { OSU_CLIENT_ID, OSU_CLIENT_SECRET, OSU_TOKEN } = process.env
 
 // Refresh Bearer Token when it expires
 async function refreshAccessToken() {
@@ -11,14 +12,14 @@ async function refreshAccessToken() {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
             data: {
-                client_id: process.env.OSU_CLIENT_ID,
-                client_secret: process.env.OSU_CLIENT_SECRET,
+                client_id: OSU_CLIENT_ID,
+                client_secret: OSU_CLIENT_SECRET,
                 grant_type: 'client_credentials',
                 scope: 'public'
             }
         });
 
-        process.env.OSU_TOKEN = 'Bearer ' + response.data.access_token;
+        process.env.OSU_TOKEN = `Bearer ${response.data.access_token}`;
         console.log('\n\nToken refreshed: ', process.env.OSU_TOKEN);
     } catch (err) {
         console.error('\n\n\n[ERROR] | Error trying to refresh osu!Api (v2) TOKEN!', err);
@@ -38,23 +39,13 @@ async function axiosInterceptor() {
             if (error.response.status === 401 && !originalRequest._retry) {
                 originalRequest._retry = true;
 
-                console.log(`Current token: ${process.env.OSU_TOKEN}`)
-
                 return refreshAccessToken().then(() => {
-                originalRequest.headers.Authorization = process.env.OSU_TOKEN;
-                return axios(originalRequest);
+                    originalRequest.headers.Authorization = `Bearer ${process.env.OSU_TOKEN}`;
+                    return axios(originalRequest);
                 });
             }
-            
-            else if (error.response.status === 404) throw {
-                code: error.response.status,
-                status: error.response.status,
-                statusText: error.response.status,
-                erro_object: {...error}
-            }
 
-
-            else return Promise.reject(error);
+            return Promise.reject(error);
         }
     );
 }

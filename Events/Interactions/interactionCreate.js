@@ -13,13 +13,12 @@ module.exports = {
 		if (!interaction.isChatInputCommand()) return;
 
 		const command = interaction.client.commands.get(interaction.commandName);
-		if (!command) {
-			console.error(`No command matching ${interaction.commandName} was found.`);
-			return;
-		}
+		const botOwner = process.env.OWNER_ID;
 
-		if(command.developer && interaction.user.id !== "1020433335803183165")
-        return interaction.reply({
+		if (!command) {
+			return console.error(`No command matching ${interaction.commandName} was found.`);
+		}
+		else if(command.developer && interaction.user.id !== botOwner) return interaction.reply({
             content: "This command is only available to the developer.",
             ephemeral: true
         });
@@ -31,7 +30,7 @@ module.exports = {
 		try {
 			if(subCommand) {
 				const subCommandFile = interaction.client.subCommands.get(`${interaction.commandName}.${subCommand}`);
-				if(!subCommandFile) return console.error(`No command matching ${interaction.commandName} was found.`);
+				if(!subCommandFile) throw console.error(`No command matching ${interaction.commandName} was found.`);
 
 				await subCommandFile.execute(interaction)
 			}
@@ -39,9 +38,15 @@ module.exports = {
 			else await command.execute(interaction);
 		} catch (error) {
 			if(!error) return;
+
+			const channelID = process.env.PRIVATE_LOGS;
+			const channel = interaction.client.channels.cache.get(channelID);
 			
-			console.error(`\nError executing ${interaction.commandName}`);
-			console.error(error);
+			if(error.response) console.error(`\n\nSomething went wrong executing ${interaction.commandName}:\n`, error);
+			console.log('\n\n', error)
+			await channel.send({
+				content: `Error Message: ${error}`,
+			});
 		}
 	},
 };
